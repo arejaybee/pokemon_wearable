@@ -4,6 +4,12 @@ A watchface that will give a random pokemon each day!
 
 Hatch your pokemon from an egg and watch it grow as you walk! Every 100 steps will level them up.
 
+---------Installation--------
+
+I recommend only side loading apps like this with android studio. For those who don't know how to use it I have include the .apk file, but I am not sure
+
+to sideload the watchface, and that is not the purpose of this project
+
 ------------ CREDITS -----------------
 
 None of the images used in this app belong to me. These sprites were ripped from Pokemon Rejuvenation (https://www.rebornevo.com/rejuvenation/) 
