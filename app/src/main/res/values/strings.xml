@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">pokemon_watch</string>
+    <string name="message">Watch face tapped</string>
+    <string name="my_analog_name">My Analog</string>
+
+    <!-- Pokemon Names -->
+    <string name="pokemon_porygon">Porygon</string>
+</resources>
