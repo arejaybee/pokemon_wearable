@@ -3,6 +3,7 @@ package com.arejaybee.pokemon_watch.pokemon
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import com.arejaybee.pokemon_watch.R
 
 object PokemonGraphics {
@@ -42,7 +43,10 @@ object PokemonGraphics {
         val expBarMod = (experience.toFloat() / 100) - level
         val myBar: Bitmap = expBar.copy(expBar.config, true)
         val offset = 5.0f
-        myBar.width = expBar.width.coerceAtMost((myBar.width * expBarMod + offset).toInt())
+        val newWidth = expBar.width.coerceAtMost(
+                (myBar.width * expBarMod + offset).toInt()
+            )
+        myBar.width = 1.coerceAtLeast(newWidth)
         return myBar
     }
 

@@ -21,6 +21,7 @@ object PreferenceUtil {
      */
     fun updateSteps(context: Context, totalStepSinceReboot: Int): Int {
         var lastMeasuredTotal = getPreference(context, today(STEP_PREFIX))
+
         return if (lastMeasuredTotal == 0) {
             lastMeasuredTotal = totalStepSinceReboot
             savePreferences(context, today(STEP_PREFIX), lastMeasuredTotal)

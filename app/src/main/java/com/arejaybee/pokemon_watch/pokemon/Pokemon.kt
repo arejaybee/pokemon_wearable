@@ -1,6 +1,7 @@
 package com.arejaybee.pokemon_watch.pokemon
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.hardware.Sensor
@@ -10,6 +11,7 @@ import android.media.MediaPlayer
 import android.util.Log
 import com.arejaybee.pokemon_watch.PreferenceUtil
 import java.util.*
+import kotlin.math.exp
 import kotlin.random.Random
 
 open class Pokemon(
@@ -55,6 +57,10 @@ open class Pokemon(
     fun onTick() {
         updateStatus()
         evolveIfAble()
+
+        if(experience < 0) {
+            experience = 0
+        }
     }
 
     /**
@@ -78,11 +84,16 @@ open class Pokemon(
                 name = "Egg"
             } else {
                 name = PokemonMap.map[id]?.name ?: "Unown"
-                val cryFileName = "cry_" + name.lowercase().replace("-", "_")
-                cryPlayer = MediaPlayer.create(
-                    context,
-                    context.resources.getIdentifier(cryFileName, "raw", packageName)
-                )
+
+                val cryFileName = "cry_" + name.lowercase().replace("-", "_").replace(":","").replace(" ","")
+                try {
+                    cryPlayer = MediaPlayer.create(
+                        context,
+                        context.resources.getIdentifier(cryFileName, "raw", packageName)
+                    )
+                } catch(err: Resources.NotFoundException) {
+                    Log.e("ROBERT", "Cry not found for: $cryFileName")
+                }
             }
 
         } catch (err: NullPointerException) {
